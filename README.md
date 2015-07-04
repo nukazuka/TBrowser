@@ -10,7 +10,7 @@ ROOT (data analysis framework made by CERN) is needed.
 Go to "src" directory and
 
 	make
-.
+
 
 You can install this application with following:
 
