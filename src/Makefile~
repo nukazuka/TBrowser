@@ -1,0 +1,36 @@
+
+COMPILER = g++
+#COMPILER = clang++
+#COMPILER = g++-4.4
+CFLAGS    = -g -MMD -MP -Wall -Wextra -Winit-self -Wno-unused-parameter -Wfloat-equal -std=c++11
+CFLAGS   += `root-config --cflags`
+LDFLAGS   =
+LDFLAGS  += `root-config --libs`
+LIBS      =
+INCLUDE   = -I../include
+
+#TARGET   = ../bin/$(shell basename `readlink -f ..`)
+TARGET   = tb
+
+OBJDIR   = ./obj
+ifeq "$(strip $(OBJDIR))" ""
+  OBJDIR = .
+endif
+SOURCES  = $(wildcard *.cc)
+OBJECTS  = $(addprefix $(OBJDIR)/, $(SOURCES:.cc=.o))
+DEPENDS  = $(OBJECTS:.o=.d)
+
+$(TARGET): $(OBJECTS) $(LIBS)
+	$(COMPILER) -o $@ $^ $(LDFLAGS)
+
+$(OBJDIR)/%.o: %.cc
+	@[ -d $(OBJDIR) ] || mkdir -p $(OBJDIR)
+	$(COMPILER) $(CFLAGS) $(INCLUDE) -o $@ -c $<
+
+all: clean $(TARGET)
+
+clean:
+	rm -f $(OBJECTS) $(DEPENDS) $(TARGET)
+	@rmdir --ignore-fail-on-non-empty `readlink -f $(OBJDIR)`
+
+-include $(DEPENDS)

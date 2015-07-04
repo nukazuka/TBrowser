@@ -1,0 +1,27 @@
+G++ = g++
+#G++ = clang++ -w -Wall
+#G++ = g++-4.4 -w -Wall -O1
+
+PROGRAM = tb
+CPPFLAGS  = -g -MMD -MP -Wall -Wextra -Winit-self -Wno-unused-parameter -Wfloat-equal -std=c++11
+CPPFLAGS += -O1 -O2 -O3
+CPPFLAGS += `root-config --cflags`
+LDLIBS   += `root-config --libs`
+INCLUDE = -I../include
+
+SOURCE = $(wildcard *.cc)
+OBJECTS = $(SOURCES:.cc=.o)
+
+INSTALL_DIR=~/bin
+
+$(PROGRAM): $(OBJECTS)
+	$(G++) -m64  $(LDLIBS) -o $@ $^ $(OBJECTS)
+
+.cc.o:
+	$(G++) $(INCLUDE) $(CPPFLAGS) -c $<
+
+install:$(PROGRAM)
+	install -s $(PROGRAM) ${INSTALL_DIR}
+
+clean:
+	rm -f *.o *~ $(PROGRAM)
