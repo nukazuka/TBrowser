@@ -16,15 +16,15 @@ OBJDIR   = ./obj
 ifeq "$(strip $(OBJDIR))" ""
   OBJDIR = .
 endif
+
 SOURCES  = $(wildcard *.cc)
-OBJECTS  = $(addprefix $(OBJDIR)/, $(SOURCES:.cc=.o))
+OBJECTS  = $(SOURCES:.cc=.o)
 DEPENDS  = $(OBJECTS:.o=.d)
 
 $(TARGET): $(OBJECTS) $(LIBS)
 	$(COMPILER) -o $@ $^ $(LDFLAGS)
 
-$(OBJDIR)/%.o: %.cc
-	@[ -d $(OBJDIR) ] || mkdir -p $(OBJDIR)
+%.o: %.cc
 	$(COMPILER) $(CFLAGS) $(INCLUDE) -o $@ -c $<
 
 all: clean $(TARGET)
@@ -34,6 +34,5 @@ install: $(TARGET)
 
 clean:
 	rm -f $(OBJECTS) $(DEPENDS) $(TARGET)
-	@rmdir --ignore-fail-on-non-empty `readlink -f $(OBJDIR)`
 
 -include $(DEPENDS)
