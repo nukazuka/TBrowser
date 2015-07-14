@@ -12,11 +12,6 @@ INSTALL_DIR = ~/bin
 
 TARGET   = tb
 
-OBJDIR   = ./obj
-ifeq "$(strip $(OBJDIR))" ""
-  OBJDIR = .
-endif
-
 SOURCES  = $(wildcard *.cc)
 OBJECTS  = $(SOURCES:.cc=.o)
 DEPENDS  = $(OBJECTS:.o=.d)
