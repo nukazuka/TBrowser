@@ -9,6 +9,7 @@
 #include "TROOT.h"
 #include "TFile.h"
 #include "TStyle.h"
+#include "TRootBrowser.h"
 
 #include <unistd.h>
 #include <sys/types.h>

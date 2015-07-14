@@ -58,7 +58,18 @@ obj/main.o: main.cc ../include/main.hh ../include/Argument.hh \
   /Users/nukazuka/local/root/pro/include/TStyle.h \
   /Users/nukazuka/local/root/pro/include/TAttAxis.h \
   /Users/nukazuka/local/root/pro/include/TArrayI.h \
-  /Users/nukazuka/local/root/pro/include/TArray.h
+  /Users/nukazuka/local/root/pro/include/TArray.h \
+  /Users/nukazuka/local/root/pro/include/TRootBrowser.h \
+  /Users/nukazuka/local/root/pro/include/TGFrame.h \
+  /Users/nukazuka/local/root/pro/include/TGWindow.h \
+  /Users/nukazuka/local/root/pro/include/TGObject.h \
+  /Users/nukazuka/local/root/pro/include/TGClient.h \
+  /Users/nukazuka/local/root/pro/include/TGDimension.h \
+  /Users/nukazuka/local/root/pro/include/TGGC.h \
+  /Users/nukazuka/local/root/pro/include/TRefCnt.h \
+  /Users/nukazuka/local/root/pro/include/TGFont.h \
+  /Users/nukazuka/local/root/pro/include/TGLayout.h \
+  /Users/nukazuka/local/root/pro/include/TGString.h
 
 ../include/main.hh:
 
@@ -183,3 +194,25 @@ obj/main.o: main.cc ../include/main.hh ../include/Argument.hh \
 /Users/nukazuka/local/root/pro/include/TArrayI.h:
 
 /Users/nukazuka/local/root/pro/include/TArray.h:
+
+/Users/nukazuka/local/root/pro/include/TRootBrowser.h:
+
+/Users/nukazuka/local/root/pro/include/TGFrame.h:
+
+/Users/nukazuka/local/root/pro/include/TGWindow.h:
+
+/Users/nukazuka/local/root/pro/include/TGObject.h:
+
+/Users/nukazuka/local/root/pro/include/TGClient.h:
+
+/Users/nukazuka/local/root/pro/include/TGDimension.h:
+
+/Users/nukazuka/local/root/pro/include/TGGC.h:
+
+/Users/nukazuka/local/root/pro/include/TRefCnt.h:
+
+/Users/nukazuka/local/root/pro/include/TGFont.h:
+
+/Users/nukazuka/local/root/pro/include/TGLayout.h:
+
+/Users/nukazuka/local/root/pro/include/TGString.h:

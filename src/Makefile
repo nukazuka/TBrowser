@@ -1,4 +1,3 @@
-
 COMPILER = g++
 #COMPILER = clang++
 #COMPILER = g++-4.4
