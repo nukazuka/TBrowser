@@ -28,6 +28,6 @@ install: $(TARGET)
 	install -s $(TARGET) $(INSTALL_DIR)
 
 clean:
-	rm -f $(OBJECTS) $(DEPENDS) $(TARGET) *~
+	rm -f $(OBJECTS) $(DEPENDS) $(TARGET) *~ \#* ../include/*~ ../include/\#*
 
 -include $(DEPENDS)
