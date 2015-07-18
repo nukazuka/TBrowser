@@ -22,13 +22,25 @@ Argument::Argument(int argc, char* argv[] ){
     { 
       result = getopt_long( argc, argv, "dow", Loptions, &index );
 
+      string content = "";
+
+      if( optarg != NULL )
+	content = optarg;
+
+      if( content.find("~") != string::npos )
+	{
+
+	  string home_dir = getenv( "HOME" );
+	  content = Replace( content , "~", home_dir );
+	}
+
       if( result == 'o' )
 	{
 	  Option();
 	}
       if( result == 'd' )
 	{
-	  dir_ = optarg;
+	  dir_ = content;
 	}
 
       switch ( result )
@@ -36,13 +48,13 @@ Argument::Argument(int argc, char* argv[] ){
 
 	case 1 :
 	  {
-	    width_ = atoi( optarg );
+	    width_ = String2Int( content );
 	    break;
 	  }
 	case 2 : 
 	  {
 
-	    height_ = atoi( optarg );
+	    height_ = String2Int( content );
 	    break;
 	  }
 	}

@@ -4,6 +4,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <getopt.h>
+#include "StringOperation.hh"
 
 using namespace std;
 class Argument{

@@ -59,7 +59,7 @@ void GetROOTFiles( string dir_name, vector < string >& vfile )
 	    {
 
 	      string name = dent->d_name;
-	      if( name.find( ".root" )  != string::npos && name.find( "DST" ) == string::npos )
+	      if( name.find( ".root" )  != string::npos && name.find( "DST" ) == string::npos && name != ".root_hist" )
 		vfile.push_back( dir_name + name );
 	    }
 	} 
