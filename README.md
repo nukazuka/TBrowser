@@ -23,20 +23,17 @@ If you want to specify installed directory, edit Makefile:
 
 ## Option
 
-Some options are available:
+Following options are available:
 
-dir
-:   You can specify a directory which you want to see.
+ option      | detail 
+ ----------- | ------------------------------------------------- 
+ option or o | You can check all options. 
+ file        | You can open onyl 1 file.
+ dir         | You can specify a directory which you want to see.
+ height      | You can set a hight of a window in px. 
+ width       | You can set a width of a window in px. 
 
-height
-:   You can set a hight of a window in px.
-
-width
-:   You can set a width of a window in px.
-
-option
-:   You can check all options.
-
+*A file option has priority to a dir option.*
 
 ### Example
 
