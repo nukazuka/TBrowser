@@ -22,7 +22,11 @@ int main(int argc, char* argv[])
 
   // names of ROOT file in the target directory
   vector < string > vfile;
-  GetROOTFiles( dir_name, vfile );
+
+  if( arg->GetFilePath() == "" )
+    GetROOTFiles( dir_name, vfile );
+  else
+    vfile.push_back( arg->GetFilePath() );
 
   // open ROOT files 
   TFile* tf[vfile.size()];

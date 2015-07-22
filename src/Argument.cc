@@ -4,23 +4,25 @@ using namespace std;
 Argument::Argument(int argc, char* argv[] ){
   struct option Loptions[] = 
     {
-      {"dir"    , required_argument, 0, 'd'},
-      {"option" , no_argument      , 0, 'o'},
-      {"width"  , required_argument, 0, 1},
-      {"height" , required_argument, 0, 2},
+      {"dir"    , required_argument, 0,  0  },
+      {"option" , no_argument      , 0, 'o' },
+      {"width"  , required_argument, 0,  1  },
+      {"height" , required_argument, 0,  2  },
+      {"file"   , required_argument, 0,  3  },
       {0, 0, 0, 0}
     };
   
   dir_ = ".";
+  file_ = "";
   width_ = 1200.0;
   height_ = 800.0;
 
   int index = 0;
   int result = 0;
 
-  while(result != -1)
+  while ( result != -1 )
     { 
-      result = getopt_long( argc, argv, "dow", Loptions, &index );
+      result = getopt_long( argc, argv, "o", Loptions, &index );
 
       string content = "";
 
@@ -38,14 +40,15 @@ Argument::Argument(int argc, char* argv[] ){
 	{
 	  Option();
 	}
-      if( result == 'd' )
-	{
-	  dir_ = content;
-	}
 
       switch ( result )
 	{
 
+	case 0:
+	  {
+	    dir_ = content;
+	    break;
+	  }
 	case 1 :
 	  {
 	    width_ = String2Int( content );
@@ -55,6 +58,12 @@ Argument::Argument(int argc, char* argv[] ){
 	  {
 
 	    height_ = String2Int( content );
+	    break;
+	  }
+	case 3 : 
+	  {
+
+	    file_ = content;
 	    break;
 	  }
 	}
@@ -69,12 +78,14 @@ Argument::Argument(int argc, char* argv[] ){
 
 void Argument::Option(){
 
-  cout << "--OPTIONS--------------------------------------" << endl;
-  cout << "  --dir, -d \t Specify directory" << endl;
-  cout << "  --option -o\t View all options" << endl;
-  cout << "  --height \t Height of window" << endl;
-  cout << "  --width  \t Width of window" << endl;
-  cout << "-----------------------------------------------" << endl;
+  int width = 13;
+  cout << "--OPTIONS-------------------------------" << endl;
+  cout << "|" << setw(width) << "--option, -o" << " : View all options"    << endl;
+  cout << "|" << setw(width) << "--file"       << " : Specify only 1 file" << endl;
+  cout << "|" << setw(width) << "--dir"        << " : Specify directory"   << endl;
+  cout << "|" << setw(width) << "--height"     << " : Height of window"    << endl;
+  cout << "|" << setw(width) << "--width"      << " : Width of window"     << endl;
+  cout << "----------------------------------------" << endl;
 
   exit(1);
 }

@@ -58,7 +58,6 @@ string Replace( string word, string old_key, string new_key )
 	}
     }
 
-  cout << "===> "  << rtn << endl;
   return rtn;
 }
 
