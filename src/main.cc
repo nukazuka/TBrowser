@@ -13,7 +13,7 @@ int main(int argc, char* argv[])
 
   TApplication app( "app", &argc, argv );
   gROOT->SetStyle("Plain") ;
-  gStyle->SetPalette(55, 0, 1 );
+  gStyle->SetPalette(kBird);
 
   TBrowser* a = new TBrowser("Browser", "TBrowser", arg->GetWindowWidth() ,arg->GetWindowHeight() );
   gPad->SetGridx( true );
