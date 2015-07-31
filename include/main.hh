@@ -2,6 +2,7 @@
 #define MAIN_HH
 
 #include "Argument.hh"
+#include "Style.hh"
 
 #include "TApplication.h"
 #include "TBrowser.h"

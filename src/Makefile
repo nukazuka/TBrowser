@@ -9,6 +9,7 @@ LDFLAGS  += `root-config --libs`
 LIBS      =
 INCLUDE   = -I../include
 INSTALL_DIR = ~/bin
+STYLE_DIR = ../style
 
 TARGET   = tb
 

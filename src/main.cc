@@ -5,6 +5,12 @@ using namespace std;
 int main(int argc, char* argv[])
 {
 
+  // set style
+  TStyle* style = Style();
+  gROOT->SetStyle("Sample") ;
+  gROOT->ForceStyle();
+  gStyle->SetPalette(55, 0, 1 );
+
   // argument handler
   Argument* arg = new Argument( argc, argv );
 
@@ -12,13 +18,8 @@ int main(int argc, char* argv[])
   string dir_name = arg->GetDirPath();
 
   TApplication app( "app", &argc, argv );
-  gROOT->SetStyle("Plain") ;
-  gStyle->SetPalette(57);
 
   TBrowser* a = new TBrowser("Browser", "TBrowser", arg->GetWindowWidth() ,arg->GetWindowHeight() );
-  gPad->SetGridx( true );
-  gPad->SetGridy( true );
-  gPad->SetTicks( 1, 1 );
 
   // names of ROOT file in the target directory
   vector < string > vfile;
