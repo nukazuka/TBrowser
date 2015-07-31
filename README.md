@@ -1,5 +1,7 @@
 # TBrowser
 
+[日本語版はこちら](README.ja.html)
+
 Just start TBrowser.
 
 ROOT (data analysis framework made by CERN) is needed.
