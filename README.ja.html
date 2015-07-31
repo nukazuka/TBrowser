@@ -1,0 +1,164 @@
+<h1 id="tbrowser">TBrowser</h1>
+
+<p>あなたは ROOT ファイルをちょっと見るためだけに，</p>
+
+<pre><code>$ root
+root [0] new TBrowser
+</code></pre>
+
+<p>なんて面倒なことをやっていませんか？</p>
+
+<p>「<strong>この程度の事ならコマンド一つで終わればいいのに・・・</strong>」</p>
+
+<p>「<strong>シェルスクリプトをかけば・・・面倒くさ</strong>」</p>
+
+<p>と思っていませんか？</p>
+
+<p>そんなあなたにオススメするのがこのアプリです！</p>
+
+<p>これをインストールすれば，</p>
+
+<pre><code>$ tb
+</code></pre>
+
+<p>ひとつで TBrowser が立ち上がります！
+インタープリタよりも動作が早くなります！（※製作者の個人的な感想です）</p>
+
+<p>このアプリを使うには，CERN の ROOT (data analysis framework made by CERN) が必要です。</p>
+
+<h2 id="コンパイル，インストール">コンパイル，インストール</h2>
+
+<p>src ディレクトリに移動し，</p>
+
+<pre><code>make
+</code></pre>
+
+<p>を実行してください。
+エラーでコンパイルが停止しなければ，コンパイルは完了です。</p>
+
+<p>インストールをするには，上のコマンドの後に</p>
+
+<pre><code>make install
+</code></pre>
+
+<p>を実行してください。</p>
+
+<p>ただし，インストールする場所は PATH が通っている必要があります。
+デフォルトの設定では ~/bin としています。
+インストール先を変えるには，Makefile 中の</p>
+
+<pre><code>INSTALL_DIR = path/to/somewhere
+</code></pre>
+
+<p>の = 以降を編集してください。</p>
+
+<h2 id="オプション">オプション</h2>
+
+<p>以下のオプションが利用できます。</p>
+
+<table>
+<colgroup>
+<col style="text-align:left;"/>
+<col style="text-align:left;"/>
+</colgroup>
+
+<thead>
+<tr>
+	<th style="text-align:left;">option</th>
+	<th style="text-align:left;">detail</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+	<td style="text-align:left;">option or o</td>
+	<td style="text-align:left;">使用できる option を表示する。</td>
+</tr>
+<tr>
+	<td style="text-align:left;">file</td>
+	<td style="text-align:left;">開くファイルを一つだけ指定する。</td>
+</tr>
+<tr>
+	<td style="text-align:left;">dir</td>
+	<td style="text-align:left;">指定したディレクトリにある ROOT ファイルを開く。</td>
+</tr>
+<tr>
+	<td style="text-align:left;">height</td>
+	<td style="text-align:left;">window の高さを指定する。</td>
+</tr>
+<tr>
+	<td style="text-align:left;">width</td>
+	<td style="text-align:left;">window の幅を指定する。</td>
+</tr>
+</tbody>
+</table>
+
+<p>file, dir オプションを使うと，TBrowser の左側にあるファイルリストの &#8220;ROOT Files&#8221; という
+項目内に，指定した ROOT ファイルが表示されます。
+個人的な感想ですが，ROOT ファイルのみが表示され，階層の深いディレクトリでも横スクロールする必要がないので
+便利だと思います。</p>
+
+<p>file オプションと dir オプションでは，file オプションが優先されます。</p>
+
+<h3 id="例">例</h3>
+
+<p>カレントディレクトリにある data ディレクトリ内の ROOT ファイルを指定し，高さ 600 px, 幅 800 px の window で TBrowser を起動させるには，</p>
+
+<pre><code>tb --dir=./data --height=600 --width=800
+</code></pre>
+
+<p>のようにします。
+ただし，PATH の通ったディレクトリに実行ファイル tb を置く必要があります。</p>
+
+<h3 id="スタイル">スタイル</h3>
+
+<p>デフォルトのスタイルを製作者好みに変更しました。
+Modern スタイルを元にして，以下の点を変更しています。</p>
+
+<p>ユーザーが自分のスタイルを簡単に適用できるようにアップグレードするつもりです。</p>
+
+<h4 id="pad">Pad</h4>
+
+<p>kGray 色のグリッドが表示されます。</p>
+
+<p>x, y 軸にチックが表示されます。</p>
+
+<p>フィッティングの結果が表示されます。</p>
+
+<h4 id="histgram">HISTGRAM</h4>
+
+<p>線の色を濃い青から黒に変更しました。
+線幅を少し太くしました。
+y 軸が 0 から始まります（TStyle::SetHistMinimumZero(kFalse) だと，y 軸が一番低い bin にあるように調整される）。</p>
+
+<h4 id="graph">GRAPH</h4>
+
+<p>マーカーを 1 番 から 6 番に変更しました。
+大量の点を表示させると，動作が遅くなります。
+オプションでこの設定を無効にできるように更新するつもりです。
+自分で設定を変えるには，src/Style.cc の</p>
+
+<pre><code>   tmpStyle-&gt;SetMarkerStyle(6); // edited
+</code></pre>
+
+<p>を</p>
+
+<pre><code>   tmpStyle-&gt;SetMarkerStyle(1); // edited
+</code></pre>
+
+<p>に書き換えてください。</p>
+
+<h4 id="datedisplay">DATE DISPLAY</h4>
+
+<p>実行時の日時がキャンバス下部に表示されます。
+文字色は kGray+1 です。</p>
+
+<h2 id="おすすめの設定">おすすめの設定</h2>
+
+<p>.bashrc や .bash_profile (bash の場合)に</p>
+
+<pre><code>function tb { ~/bin/tb $@  &amp; }
+</code></pre>
+
+<p>を加えると，必ずバックグラウンドで実行されます。
+めんどくさがり屋のためのアプリなので，これを追加して &amp; を打つ手間を省きましょう。</p>
