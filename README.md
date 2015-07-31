@@ -1,6 +1,6 @@
 # TBrowser
 
-[日本語版はこちら](README.ja.html)
+[日本語版はこちら](README.ja.md)
 
 Just start TBrowser.
 
