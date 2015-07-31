@@ -44,53 +44,34 @@ Following options are available:
 A default style was introduced.
 This style is based on "Modern" style and I changed
 
-**DATE DISPLAY**
+#### Pad
 
-SetOptDate(kTRUE)
-: prints date.
+Gray grids (kGray)  are drawn.
+Ticks are drawn in all axis.
+A result of fitting is displayed.
 
-GetAttDate()->SetTextColor(kGray+1)
-: changes text color of the date into kGray+1.
+#### HISTGRAM
 
-SetDateX(0.005),SetDateY(0.005)
-: change a position of date lefter and lower.
+A line color is changed into kBlack.
+A line width is bolder.
+A y axis begins from 0(I did not check it).
 
-**Pad**
+#### GRAPH
 
-SetOptFit(kTRUE)
-: prints a result of fitting(maybe).
+A style of marker is changed from 1(dot, for scatter plot) into 6(begger than 1 but still small)
+A sytle 1 is too small for graph which has few points.
+But with styles except 1, it may take longer time to draw scatter plot.
+If you don't like this option, please edit by yourself.
 
-SetPadGridX(kTRUE),SetPadGridY(kTRUE)
-: print girds.
+#### DATE DISPLAY
 
-SetGridColor(kGray)
-: changes color of grid into kGray.
-
-SetPadTickX(kTRUE), SetPadTickY(kTRUE)
-: print ticks.
-
-**HISTGRAM**
-SetHistLineColor(kBlack)
-: changes line color of histogram into kBlack.
-
-SetHistLineWidth(2)
-: changes line width of histogram into bolder.
-
-SetHistMinimumZero(kTRUE)
-: make yaxis begin from 0( I don't check it.).
-
-**GRAPH**
-
-SetMarkerStyle(6)
-: changes marker from 1(dot, for scatter plot) into 6(begger than 1 but still small)
-  A sytle 1 is too small for graph which has few points.
-  But with styles except 1, it may take longer time to draw scatter plot.
-  If you don't like this option, please edit by yourself.
-
+A date is printed on the left and bottom of a canvas.
+Its color is gray(kGray+1).
 
 ## Recomendation
 
 I recommend to add following statement into .bashrc or .bash_profile.
+
 	function tb { ~/bin/tb $@  & }
 
 So you don't need to type "&" to run this app in background!
